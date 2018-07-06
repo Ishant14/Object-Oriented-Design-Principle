@@ -212,6 +212,12 @@ public class Employee {
 }
 ```
 
+So the implemenaion is not following the open closed principle , if tommorow the Organisation introduce new employee like which has different range of bonus calcualtion then there is a requirement to modify the ```calculatenbonus()``` method which means method is always open for calculation.
+
+> Here the method is also not followig the Single Resposibility Principle. Since ```calculatebonus()``` is calculating the bonus for more than one kind of employee.
+
+
+
 
 
 
