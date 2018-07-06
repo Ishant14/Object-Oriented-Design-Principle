@@ -212,9 +212,93 @@ public class Employee {
 }
 ```
 
-So the implemenaion is not following the open closed principle , if tommorow the Organisation introduce new employee like which has different range of bonus calcualtion then there is a requirement to modify the ```calculatenbonus()``` method which means method is always open for calculation.
+So the implementaion is not following the open closed principle , if tommorow the Organisation introduce new employee like which has different range of bonus calcualtion then there is a requirement to modify the ```calculatenbonus()``` method which means method is always open for calculation.
 
-> Here the method is also not followig the Single Resposibility Principle. Since ```calculatebonus()``` is calculating the bonus for more than one kind of employee.
+> Here the method is also not followig the Single Resposibility Principle as well. Since ```calculatebonus()``` is calculating the bonus for more than one kind of employee.
+
+
+**How to Implement the Open Closed Principle**
+
+Inheritance is only one way to implement the Open Closed Principle. Because inheritance is only an Object Oriented Design (OOD) basic pillar that allows extension of functionality of an existing class.
+
+To implement the Open Closed Principle one can use interface, an abstract class, abstract methods and virtual methods than inherit them when you want to extend functionality.
+
+**Applicaiton developement using Open Closed Principle**
+
+```java
+public abstract class Employee {
+	
+	private String name;
+	private int id;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	abstract float calculateBonus(int salary);
+
+}
+```
+
+PermanentEmployee implements the Employee class and overridding the calculatebonus() method.
+
+```java
+public class PermanentEmployee extends Employee {
+
+	@Override
+	float calculateBonus(int salary) {
+		return (float) (salary * 0.1);
+	}
+
+}
+```
+Temporary implements the Employee class and overridding the calculatebonus() method.
+
+```java
+public class TemporaryEmployee extends Employee{
+
+	@Override
+	float calculateBonus(int salary) {
+		return (float) (salary * 0.05);
+	}
+
+}
+```
+Main Class
+
+```java
+public class Main {
+	
+	public static void main(String args[]){
+		Employee permEmployee = new PermanentEmployee();
+		Employee tempEmployee = new TemporaryEmployee();
+		
+		System.out.println(permEmployee.calculateBonus(500));
+		System.out.println(tempEmployee.calculateBonus(500));
+	}
+
+}
+```
+
+
+
+
+
+
+
+
 
 
 
